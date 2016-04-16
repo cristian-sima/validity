@@ -2,7 +2,7 @@ package validity
 
 const (
 
-	// Float rules
+	// --- Float rules
 
 	// FloatValue -
 	FloatValue = "value"
@@ -14,6 +14,23 @@ const (
 	FloatMin = "min"
 	// FloatDigits -
 	FloatDigits = "digits"
+
+	// --- Integer rules
+
+	// IntValue -
+	IntValue = "value"
+	// IntValueStrict -
+	IntValueStrict = "value_strict"
+	// IntDigitsBetween -
+	IntDigitsBetween = "digits_between"
+	// IntDigitsBetweenStrict -
+	IntDigitsBetweenStrict = "digits_between_strict"
+	// IntMax -
+	IntMax = "max"
+	// IntMin -
+	IntMin = "min"
+	// IntDigits -
+	IntDigits = "digits"
 
 	// --- Special rules
 

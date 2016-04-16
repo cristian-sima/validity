@@ -109,23 +109,23 @@ func (translator Translator) translateRule(method string, options string) string
 	}
 	getIntMessage := func(rule string) string {
 		switch rule {
-		case "value":
+		case IntValue:
 			betweenMessage := translator.getMessageBetween(options)
 			return fmt.Sprintf(translator.intT.value, betweenMessage)
-		case "value_strict":
+		case IntValueStrict:
 			betweenMessage := translator.getMessageBetween(options)
 			return fmt.Sprintf(translator.intT.valueStrict, betweenMessage)
-		case "digits_between":
+		case IntDigitsBetween:
 			betweenMessage := translator.getMessageBetween(options)
 			return fmt.Sprintf(translator.intT.digitsBetween, betweenMessage)
-		case "digits_between_strict":
+		case IntDigitsBetweenStrict:
 			betweenMessage := translator.getMessageBetween(options)
 			return fmt.Sprintf(translator.intT.digitsBetweenStrict, betweenMessage)
-		case "min":
-			return fmt.Sprintf(translator.intT.min, options)
-		case "max":
+		case IntMax:
 			return fmt.Sprintf(translator.intT.max, options)
-		case "digits":
+		case IntMin:
+			return fmt.Sprintf(translator.intT.min, options)
+		case IntDigits:
 			return fmt.Sprintf(translator.intT.digits, options)
 		}
 		return generalMessage
