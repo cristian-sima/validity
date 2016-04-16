@@ -59,7 +59,7 @@ func (guard FloatGuard) checkRule(fullRule string) (bool, error) {
 	}
 
 	switch rule {
-	case "value":
+	case FloatValue:
 		args := getArguments(parts[1])
 		if len(args) != 2 {
 			return false, errors.New("This rule is incorrect [" + fullRule + "]. The good format is [value:a,b]")
@@ -67,7 +67,7 @@ func (guard FloatGuard) checkRule(fullRule string) (bool, error) {
 		min := args[0]
 		max := args[1]
 		return guard.validateValue(min, max), nil
-	case "value_strict":
+	case FloatStrictValue:
 		args := getArguments(parts[1])
 		if len(args) != 2 {
 			return false, errors.New("This rule is incorrect [" + fullRule + "]. The good format is [value_strict:a,b]")
@@ -75,19 +75,20 @@ func (guard FloatGuard) checkRule(fullRule string) (bool, error) {
 		min := args[0]
 		max := args[1]
 		return guard.validateValueStrict(min, max), nil
-	case "max":
-		if len(parts) != 2 {
-			return false, errors.New("This rule is incorrect [" + fullRule + "]. The good format is [max:value]")
-		}
-		max := parts[1]
-		return guard.validateMax(max), nil
-	case "min":
+	case FloatMin:
 		if len(parts) != 2 {
 			return false, errors.New("This rule is incorrect [" + fullRule + "]. The good format is [min:value]")
 		}
 		min := parts[1]
 		return guard.validateMin(min), nil
-	case "digits":
+	case FloatMax:
+		if len(parts) != 2 {
+			return false, errors.New("This rule is incorrect [" + fullRule + "]. The good format is [max:value]")
+		}
+		max := parts[1]
+		return guard.validateMax(max), nil
+
+	case FloatDigits:
 		if len(parts) != 2 {
 			return false, errors.New("This rule is incorrect [" + fullRule + "]. The good format is [digits:value]")
 		}

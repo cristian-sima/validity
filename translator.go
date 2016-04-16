@@ -92,40 +92,40 @@ func (translator Translator) translateRule(method string, options string) string
 
 	getFloatMessage := func(rule string) string {
 		switch rule {
-		case "value":
+		case FloatValue:
 			betweenMessage := translator.getMessageBetween(options)
 			return fmt.Sprintf(translator.floatT.value, betweenMessage)
-		case "value_strict":
+		case FloatStrictValue:
 			betweenMessage := translator.getMessageBetween(options)
 			return fmt.Sprintf(translator.floatT.valueStrict, betweenMessage)
-		case "min":
+		case FloatMin:
 			return fmt.Sprintf(translator.floatT.min, options)
-		case "max":
+		case FloatMax:
 			return fmt.Sprintf(translator.floatT.max, options)
-		case "digits":
+		case FloatDigits:
 			return fmt.Sprintf(translator.floatT.digits, options)
 		}
 		return generalMessage
 	}
 	getIntMessage := func(rule string) string {
 		switch rule {
-		case "value":
+		case IntValue:
 			betweenMessage := translator.getMessageBetween(options)
 			return fmt.Sprintf(translator.intT.value, betweenMessage)
-		case "value_strict":
+		case IntValueStrict:
 			betweenMessage := translator.getMessageBetween(options)
 			return fmt.Sprintf(translator.intT.valueStrict, betweenMessage)
-		case "digits_between":
+		case IntDigitsBetween:
 			betweenMessage := translator.getMessageBetween(options)
 			return fmt.Sprintf(translator.intT.digitsBetween, betweenMessage)
-		case "digits_between_strict":
+		case IntDigitsBetweenStrict:
 			betweenMessage := translator.getMessageBetween(options)
 			return fmt.Sprintf(translator.intT.digitsBetweenStrict, betweenMessage)
-		case "min":
-			return fmt.Sprintf(translator.intT.min, options)
-		case "max":
+		case IntMax:
 			return fmt.Sprintf(translator.intT.max, options)
-		case "digits":
+		case IntMin:
+			return fmt.Sprintf(translator.intT.min, options)
+		case IntDigits:
 			return fmt.Sprintf(translator.intT.digits, options)
 		}
 		return generalMessage
@@ -151,17 +151,17 @@ func (translator Translator) translateRule(method string, options string) string
 	}
 	getSpecialMessage := func(rule string) string {
 		switch rule {
-		case "iban":
+		case SpecialIBAN:
 			return translator.specialT.iban
-		case "cif":
+		case SpecialCIF:
 			return translator.specialT.cif
-		case "cnp":
+		case SpecialCnp:
 			return translator.specialT.cnp
-		case "shortDate":
+		case SpecialShortDate:
 			return translator.specialT.shortDate
-		case "longDate":
+		case SpecialLongDate:
 			return translator.specialT.longDate
-		case "email":
+		case SpecialEmail:
 			return translator.specialT.email
 		}
 		return generalMessage

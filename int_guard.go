@@ -58,7 +58,7 @@ func (guard IntGuard) checkRule(fullRule string) (bool, error) {
 	}
 
 	switch rule {
-	case "value":
+	case IntValue:
 		args := getArguments(parts[1])
 		if len(args) != 2 {
 			return false, errors.New("This rule is incorrect [" + fullRule + "]. The good format is [value:a,b]")
@@ -66,7 +66,7 @@ func (guard IntGuard) checkRule(fullRule string) (bool, error) {
 		min := args[0]
 		max := args[1]
 		return guard.validateValue(min, max), nil
-	case "value_strict":
+	case IntValueStrict:
 		args := getArguments(parts[1])
 		if len(args) != 2 {
 			return false, errors.New("This rule is incorrect [" + fullRule + "]. The good format is [value_strict:a,b]")
@@ -75,7 +75,7 @@ func (guard IntGuard) checkRule(fullRule string) (bool, error) {
 		max := args[1]
 		return guard.validateValueStrict(min, max), nil
 
-	case "digits_between":
+	case IntDigitsBetween:
 		args := getArguments(parts[1])
 		if len(args) != 2 {
 			return false, errors.New("This rule is incorrect [" + fullRule + "]. The good format is [digits_between:a,b]")
@@ -84,7 +84,7 @@ func (guard IntGuard) checkRule(fullRule string) (bool, error) {
 		max := args[1]
 		return guard.validateDigitsBetween(min, max), nil
 
-	case "digits_between_strict":
+	case IntDigitsBetweenStrict:
 		args := getArguments(parts[1])
 		if len(args) != 2 {
 			return false, errors.New("This rule is incorrect [" + fullRule + "]. The good format is [digits_between_strict:a,b]")
@@ -93,19 +93,19 @@ func (guard IntGuard) checkRule(fullRule string) (bool, error) {
 		max := args[1]
 		return guard.validateDigitsBetweenStrict(min, max), nil
 
-	case "max":
+	case IntMax:
 		if len(parts) != 2 {
 			return false, errors.New("This rule is incorrect [" + fullRule + "]. The good format is [max:value]")
 		}
 		max := parts[1]
 		return guard.validateMax(max), nil
-	case "min":
+	case IntMin:
 		if len(parts) != 2 {
 			return false, errors.New("This rule is incorrect [" + fullRule + "]. The good format is [min:value]")
 		}
 		min := parts[1]
 		return guard.validateMin(min), nil
-	case "digits":
+	case IntDigits:
 		if len(parts) != 2 {
 			return false, errors.New("This rule is incorrect [" + fullRule + "]. The good format is [digits:value]")
 		}

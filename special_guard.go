@@ -35,17 +35,17 @@ func (guard SpecialGuard) Check() Result {
 
 func (guard SpecialGuard) checkRule(rule string) (bool, error) {
 	switch rule {
-	case "iban":
+	case SpecialIBAN:
 		return guard.validateIBAN(), nil
-	case "cif":
+	case SpecialCIF:
 		return guard.validateCIF(), nil
-	case "cnp":
+	case SpecialCnp:
 		return guard.validateCNP(), nil
-	case "shortDate":
+	case SpecialShortDate:
 		return guard.validateShortDate(), nil
-	case "longDate":
+	case SpecialLongDate:
 		return guard.validateLongDate(), nil
-	case "email":
+	case SpecialEmail:
 		return guard.validateEmail(), nil
 	}
 	return false, errors.New("The guardian SPECIAL does not have the rule [" + rule + "]")
